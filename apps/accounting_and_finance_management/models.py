@@ -41,7 +41,7 @@ class CustomerInvoices(models.Model):
     Status = models.BooleanField()
 
 
-class IncommingMoney(models.Models):
+class IncomingMoney(models.Model):
     ID = models.AutoField(primary_key=True)
     TransactionDate = models.DateField()
     Description = models.CharField(max_length=255)
@@ -58,10 +58,10 @@ class InvoiceLines(models.Model):
     LineCOA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
 
 
-class IncommingMoneyLines(models.Model):
+class IncomingMoneyLines(models.Model):
     ID = models.AutoField(primary_key=True)
     LineAmount = models.DecimalField(max_digits=10, decimal_places=2)
-    IncommingMoneyID = models.ForeignKey(IncommingMoney, on_delete=models.CASCADE)
+    IncommingMoneyID = models.ForeignKey(IncomingMoney, on_delete=models.CASCADE)
     LineCOA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
 
 # Vendors Related Tables
@@ -96,7 +96,7 @@ class VendorBills(models.Model):
     Status = models.BooleanField()
 
 
-class OutgoingMoney(models.Models):
+class OutgoingMoney(models.Model):
     ID = models.AutoField(primary_key=True)
     TransactionDate = models.DateField()
     Description = models.CharField(max_length=255)
