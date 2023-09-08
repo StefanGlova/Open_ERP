@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Chart Of Accounts Table
 class ChartOfAccounts(models.Model):
     AccountID = models.AutoField(primary_key=True)
     AccountNumber = models.CharField(max_length=20, unique=True)
@@ -9,26 +9,9 @@ class ChartOfAccounts(models.Model):
     Description = models.CharField(max_length=255, null=True)
 
 
-class Transactions(models.Models):
-    TransactionID = models.AutoField(primary_key=True)
-    TransactionDate = models.DateField()
-    AccountID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
-    Description = models.CharField(max_length=255)
-    DebitAmount = models.DecimalField(max_digits=10, decimal_places=2)
-    CreditAmount = models.DecimalField(max_digits=10, decimal_places=2)
-
-
-class Vendor(models.Model):
-    VendorID = models.AutoField(primary_key=True)
-    VendorName = models.CharField(max_length=255, unique=True)
-    VendorAddress = models.CharField(max_length=255)
-    ContactPerson = models.CharField(max_length=255)
-    Phone = models.CharField(max_length=20, unique=True)
-    Email = models.EmailField(max_length=255, unique=True)
-
-
+# Customers Related Tables
 class Customers(models.Model):
-    CustomerID = models.AutoField(primary_key=True)
+    ID = models.AutoField(primary_key=True)
     CustomerName = models.CharField(max_length=255, unique=True)
     CustomerAddress = models.CharField(max_length=255)
     ContactPerson = models.CharField(max_length=255)
@@ -36,66 +19,102 @@ class Customers(models.Model):
     Email = models.EmailField(max_length=255, unique=True)
 
 
+class InvoicePayments(models.Model):
+    ID = models.AutoField(primary_key=True)
+    COA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
+    TransalctionDate = models.DateField()
+    Description = models.CharField(max_length=250)
+    Reference = models.CharField(max_length=250)
+    TotalAmount = models.DecimalField(max_digits=20, decimal_places=2)
+
+
 class CustomerInvoices(models.Model):
-    InvoiceID = models.AutoField(primary_key=True)
-    CustomerID = models.ForeignKey(Customers, on_delete=models.CASCADE)
-    InvoiceDate = models.DateField()
+    ID = models.AutoField(primary_key=True)
+    TransalctionDate = models.DateField()
     DueDate = models.DateField()
+    Description = models.CharField(max_length=250)
+    Reference = models.CharField(max_length=250)
     TotalAmount = models.DecimalField(max_digits=10, decimal_places=2)
-    VATAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    CustomerID = models.ForeignKey(Customers, on_delete=models.CASCADE)
+    InvoicePaymentID = models.ForeignKey(InvoicePayments, on_delete=models.CASCADE)
+    COA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
+    Status = models.BooleanField()
 
 
-class VendorInvoices(models.Model):
-    InvoiceID = models.AutoField(primary_key=True)
-    VendorID = models.ForeignKey(Vendor, on_delete=models.CASCADE)
-    InvoiceDate = models.DateField()
+class IncommingMoney(models.Models):
+    ID = models.AutoField(primary_key=True)
+    TransactionDate = models.DateField()
+    Description = models.CharField(max_length=255)
+    Reference = models.CharField(max_length=250)
+    TotalAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    CustomerID = models.ForeignKey(Customers, on_delete=models.CASCADE)
+    COA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
+
+
+class InvoiceLines(models.Model):
+    ID = models.AutoField(primary_key=True)
+    LineAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    InvoiceID = models.ForeignKey(CustomerInvoices, on_delete=models.CASCADE)
+    LineCOA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
+
+
+class IncommingMoneyLines(models.Model):
+    ID = models.AutoField(primary_key=True)
+    LineAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    IncommingMoneyID = models.ForeignKey(IncommingMoney, on_delete=models.CASCADE)
+    LineCOA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
+
+# Vendors Related Tables
+class Vendors(models.Model):
+    ID = models.AutoField(primary_key=True)
+    VendorName = models.CharField(max_length=255, unique=True)
+    VendorAddress = models.CharField(max_length=255)
+    ContactPerson = models.CharField(max_length=255)
+    Phone = models.CharField(max_length=20, unique=True)
+    Email = models.EmailField(max_length=255, unique=True)
+
+
+class BillPayments(models.Model):
+    ID = models.AutoField(primary_key=True)
+    COA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
+    TransactionDate = models.DateField()
+    Description = models.CharField(max_length=255)
+    Reference = models.CharField(max_length=250)
+    TotalAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    
+
+class VendorBills(models.Model):
+    ID = models.AutoField(primary_key=True)
+    TransalctionDate = models.DateField()
     DueDate = models.DateField()
+    Description = models.CharField(max_length=250)
+    Reference = models.CharField(max_length=250)
     TotalAmount = models.DecimalField(max_digits=10, decimal_places=2)
-    VATAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    VendorID = models.ForeignKey(Vendors, on_delete=models.CASCADE)
+    BillPaymentID = models.ForeignKey(BillPayments, on_delete=models.CASCADE)
+    COA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
+    Status = models.BooleanField()
 
 
-class IncomingPayments(models.Model):
-    PaymentID = models.AutoField(primary_key=True)
-    CustomerID = models.ForeignKey(Customers, on_delete=models.CASCADE)
-    VendorID = models.ForeignKey(Vendor, on_delete=models.CASCADE)
-    PaymentDate = models.DateField()
-    Amount = models.DecimalField(max_digits=10, decimal_places=2)
+class OutgoingMoney(models.Models):
+    ID = models.AutoField(primary_key=True)
+    TransactionDate = models.DateField()
+    Description = models.CharField(max_length=255)
+    Reference = models.CharField(max_length=250)
+    TotalAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    VendorID = models.ForeignKey(Vendors, on_delete=models.CASCADE)
+    COA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
 
 
-class OutgoingPayments(models.Model):
-    PaymentID = models.AutoField(primary_key=True)
-    CustomerID = models.ForeignKey(Customers, on_delete=models.CASCADE)
-    VendorID = models.ForeignKey(Vendor, on_delete=models.CASCADE)
-    PaymentDate = models.DateField()
-    Amount = models.DecimalField(max_digits=10, decimal_places=2)
+class BillLines(models.Model):
+    ID = models.AutoField(primary_key=True)
+    LineAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    BillID = models.ForeignKey(VendorBills, on_delete=models.CASCADE)
+    LineCOA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
 
 
-class CashAccounts(models.Model):
-    CashAccountID = models.AutoField(primary_key=True)
-    AccountName = models.CharField(max_length=255)
-    Balance = models.DecimalField(max_digits=10, decimal_places=2)
-
-
-class BankAccounts(models.Model):
-    BankAccountID = models.AutoField(primary_key=True)
-    AccountName = models.CharField(max_length=255)
-    Balance = models.DecimalField(max_digits=10, decimal_places=2)
-    BankName = models.CharField(max_length=255)
-    AccountNumber = models.CharField(max_length=20)
-    SortCode = models.CharField(max_length=20)
-
-
-class TaxCodes(models.Model):
-    TaxCodeID = models.AutoField(primary_key=True)
-    Code = models.CharField(max_length=10)
-    Description = models.CharField(max_length=255, null=True)
-    Rate = models.DecimalField(max_digits=5, decimal_places=2)
-
-
-class TaxReturns(models.Model):
-    TaxReturnID = models.AutoField(primary_key=True)
-    Year = models.IntegerField()
-    VATReturn = models.DecimalField(max_digits=10, decimal_places=2)
-    CorporationTaxReturn = models.DecimalField(max_digits=10, decimal_places=2)
-    PayrollTaxReturn = models.DecimalField(max_digits=10, decimal_places=2)
-
+class OutgoingMoneyLines(models.Model):
+    ID = models.AutoField(primary_key=True)
+    LineAmount = models.DecimalField(max_digits=10, decimal_places=2)
+    IncommingMoneyID = models.ForeignKey(OutgoingMoney, on_delete=models.CASCADE)
+    LineCOA_ID = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)
