@@ -37,7 +37,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home_app.apps.HomeAppConfig'
+    'home_app.apps.HomeAppConfig',
+    'applications.customers.customer_data.apps.CustomerDataConfig',
+    'applications.customers.e_commerce.apps.ECommerceConfig',
+    'applications.customers.marketing.apps.MarketingConfig',
+    'applications.finance.double_entry_bookkeeping.apps.DoubleEntryBookkeepingConfig',
+    'applications.finance.single_entry_bookkeeping.apps.SingleEntryBookkeepingConfig',
+    'applications.finance.payroll.apps.PayrollConfig',
+    'applications.operation.manufacturing.apps.ManufacturingConfig',
+    'applications.operation.supply_chain.apps.SupplyChainConfig',
+    'applications.people.disciplinary_grievance.apps.DisciplinaryGrievanceConfig',
+    'applications.people.health_safety_environment.apps.HealthSafetyEnvironmentConfig',
+    'applications.people.people_data.apps.PeopleDataConfig',
+    'applications.people.skills_learning_development.apps.SkillsLearningDevelopmentConfig',
+    'applications.KPIs.customers_KPIs.apps.CustomersKpisConfig',
+    'applications.KPIs.finance_KPIs.apps.FinanceKpisConfig',
+    'applications.KPIs.operation_KPIs.apps.OperationKpisConfig',
+    'applications.KPIs.people_KPIs.apps.PeopleKpisConfig',
+    'applications.projects.projects_data.apps.ProjectsDataConfig',
+    'applications.projects.projects_management.apps.ProjectsManagementConfig'
 ]
 
 MIDDLEWARE = [
