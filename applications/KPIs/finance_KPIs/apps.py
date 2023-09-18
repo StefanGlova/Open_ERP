@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class OperationConfig(AppConfig):
+class FinanceKpisConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'operation'
+    name = 'finance_KPIs'
