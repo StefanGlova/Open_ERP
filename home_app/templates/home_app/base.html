@@ -12,7 +12,7 @@
     <div class="container">
          <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Home</a>
+                <a class="navbar-brand" href="{% url 'home' %}">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -22,14 +22,14 @@
                     <a class="nav-link active" aria-current="page" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Admin</a>
+                        <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             People
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item app-name" href="#">People App</a></li>
+                            <li><a class="dropdown-item app-name" href="{% url 'people' %}">People App</a></li>
                             <li><a class="dropdown-item" href="#">People Data</a></li>
                             <li><a class="dropdown-item" href="#">Health, Safety & Environment</a></li>
                             <li><a class="dropdown-item" href="#">Skills, Learning & Development</a></li>
@@ -41,7 +41,7 @@
                             Operation
                         </a>
                         <ul class="dropdown-menu">
-                        <li><a class="dropdown-item app-name" href="#">Operation App</a></li>
+                        <li><a class="dropdown-item app-name" href="{% url 'operation' %}">Operation App</a></li>
                         <li><a class="dropdown-item" href="#">Manufacturing</a></li>
                         <li><a class="dropdown-item" href="#">Supply Chain</a></li>
                         </ul>
@@ -51,7 +51,7 @@
                             Customers
                         </a>
                         <ul class="dropdown-menu">
-                        <li><a class="dropdown-item app-name" href="#">Customers App</a></li>
+                        <li><a class="dropdown-item app-name" href="{% url 'customers' %}">Customers App</a></li>
                         <li><a class="dropdown-item" href="#">Customer Data</a></li>
                         <li><a class="dropdown-item" href="#">E - Commerce</a></li>
                         <li><a class="dropdown-item" href="#">Marketing</a></li>
@@ -62,7 +62,7 @@
                             Finance
                         </a>
                         <ul class="dropdown-menu">
-                        <li><a class="dropdown-item app-name" href="#">Finance App</a></li>
+                        <li><a class="dropdown-item app-name" href="{% url 'finance' %}">Finance App</a></li>
                         <li><a class="dropdown-item" href="#">Single-Entry Bookkeeping</a></li>
                         <li><a class="dropdown-item" href="#">Double-Entry Bookkeeping</a></li>
                         <li><a class="dropdown-item" href="#">Payroll</a></li>
@@ -73,7 +73,7 @@
                             Projects
                         </a>
                         <ul class="dropdown-menu">
-                        <li><a class="dropdown-item app-name" href="#">Projects App</a></li>
+                        <li><a class="dropdown-item app-name" href="{% url 'projects' %}">Projects App</a></li>
                         <li><a class="dropdown-item" href="#">Projects Data</a></li>
                         <li><a class="dropdown-item" href="#">Projects Management</a></li>
                         </ul>
@@ -83,7 +83,7 @@
                             KPIs
                         </a>
                         <ul class="dropdown-menu">
-                        <li><a class="dropdown-item app-name" href="#">KPIs App</a></li>
+                        <li><a class="dropdown-item app-name" href="{% url 'KPIs' %}">KPIs App</a></li>
                         <li><a class="dropdown-item" href="#">People</a></li>
                         <li><a class="dropdown-item" href="#">Operation</a></li>
                         <li><a class="dropdown-item" href="#">Customers</a></li>

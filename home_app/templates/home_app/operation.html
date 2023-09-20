@@ -1,9 +1,14 @@
 {% extends "home_app/base.html" %}
+{% load static %}
 
 {% block content %}
 
     <div class="container">
-        <img src="../static/background_img.jpg" class="img-fluid" alt="...">
+        <h1>Operation App</h1>
+        <br>
+        <p>Open-source Enterprise Resource Planning software for small and medium businesses.</p>
+        <img src="{% static 'home_app/images/operation.jpg' %}" class="img-fluid" alt="Image">
+        <p>Photo by <a href="https://unsplash.com/@rozetsky?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ant Rozetsky</a> on <a href="https://unsplash.com/photos/SLIFI67jv5k?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
     </div>
 
 {% endblock content %}
