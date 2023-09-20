@@ -21,3 +21,6 @@ def projects(request):
 
 def KPIs(request):
     return render(request, 'home_app/KPIs.html')
+
+def about(request):
+    return render(request, 'home_app/about.html')

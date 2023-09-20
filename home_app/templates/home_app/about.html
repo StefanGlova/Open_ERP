@@ -1,9 +1,70 @@
-{% extends "home_app/base.html" %}
+{% extends "home_app/base.html" %} {% load static %} {% block content %}
 
-{% block content %}
-
-    <div class="container">
-        <img src="../static/background_img.jpg" class="img-fluid" alt="...">
+<div class="container">
+  <h1>About Author</h1>
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-8"></div>
+      <div class="row">
+        <div class="col-4">
+          <img
+            src="{% static 'home_app/images/stefan.jpg' %}"
+            class="img-fluid"
+            alt="Image"
+          />
+        </div>
+        <div class="col-8">
+          <p class="about-me">
+            I am Stefan Glova, author of Open ERP project – project started in
+            August 2023 with ambition to become widely used, fully personalised
+            Enterprise Resource Planning software for small and medium
+            businesses.
+            <br />
+            <br />
+            Self-learning developer, mostly focused on Python, Django,
+            JavaScript and SQL with aspiration to learn Haxell, React, C
+            language and many more.
+            <br />
+            <br />
+            Codewars warrior, who is aiming to sort all katas (challenges /
+            puzzles) at Codewars in all available languages (currently
+            percentile rank top 1 %).
+          </p>
+          <h3 class="small-heading">More of my activities here:</h3>
+          <div class="row">
+            <div class="col-12">
+                <a href="https://www.codewars.com/users/glovastefan" target="_blank"><button type="button" class="btn btn-secondary">Codewars</button></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+                <a href="https://stackoverflow.com/users/14744151/stefan-glova" target="_blank"><button type="button" class="btn btn-secondary">StackOverflow</button></a>
+            </div>
+            <div class="col-6">
+                <a href="https://github.com/StefanGlova" target="_blank"><button type="button" class="btn btn-secondary">github</button></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+                <a href="https://www.youtube.com/@stefanglova5027" target="_blank"><button type="button" class="btn btn-secondary">youtube</button></a>
+            </div>
+            <div class="col-6">
+                <a href="https://www.linkedin.com/in/stefan-glova-b28737103/" target="_blank"><button type="button" class="btn btn-secondary">LinkedIn</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <br />
+    <h1>About Project</h1>
+    <br>
+    <img
+      src="{% static 'home_app/images/open_ERP structure.jpg' %}"
+      class="img-fluid"
+      alt="Image"
+    />
+  </div>
 
-{% endblock content %}
+  {% endblock content %}
+</div>

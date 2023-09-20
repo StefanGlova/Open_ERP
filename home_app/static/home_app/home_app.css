@@ -1,3 +1,31 @@
+body{
+    size: 80%;
+}
+
 .app-name{
     font-weight: bold; 
+}
+
+.btn {
+    width: 100%;
+}
+
+.row {
+    margin-top: 1%;  
+}
+
+.small-heading {
+    margin-bottom: 2%;
+}
+
+.about-me {
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.navbar {
+    font-size: 150%;
 }
