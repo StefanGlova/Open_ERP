@@ -1,12 +1,13 @@
 {% extends "people_data/base.html" %} {% load static %} {% block body %}
 
-<h3 class="m-4">All Employees</h3>
 <div class="row">
     <div class="col-12">
         {% if employees %}
             <div class="card bg-light ms-4 me-4 mb-4">
                 <div class="card-header">
-                    <i class="fa-solid fa-list fa-lg"></i>Employees Records
+                    <a class="btn btn-success me-1" href="{% url 'add' %}">
+                        ADD New Employee
+                    </a>
                 </div>
                 <div class="card-body">
                     <p class="card-text">
@@ -14,34 +15,28 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Employee ID</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">Phone Number</th>
                                     <th scope="col">Email</th> 
-                                    <th scope="col">Emergency Contact (Name and phone number)</th>
-                                    <th scope="col">Employment Start Date</th> 
-                                    <th scope="col">Employment End Date</th>
-                                    <th scope="col">Action</th>                                          
+                                    <th scope="col">Details</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>                                        
                                 </tr>
                                 </thead>
                                 <tbody>
                                     {% for employee in employees  %}
                                         <tr>
-                                            <td>{{ employee.id }}</td>
                                             <td>{{ employee.first_name }}</td>
                                             <td>{{ employee.last_name }}</td>
                                             <td>{{ employee.address }}</td>
                                             <td>{{ employee.phone }}</td>
                                             <td>{{ employee.email }}</td>
-                                            <td>{{ employee.emergency_contact }}</td>
-                                            <td>{{ employee.employment_start_date }}</td>
-                                            <td>{{ employee.employment_end_date }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-success me-1" href="{% url 'view_employee' employee.id %}"
                                                     data-bs-toggle="modal" data-bs-target="#myModal{{ employee.id }}">
-                                                    <i class="fa-solid fa-circle-info fa-lg"></i>
+                                                    VIEW
                                                 </button>
 
                                                 <div class="modal" id="myModal{{ employee.id }}" tabindex="-1" aria-labelledby="myModallabell" aria-hidden="true">
@@ -61,9 +56,9 @@
                                                                 <li>Address: <strong>{{ employee.address }}</strong></li>
                                                                 <li>Phone Number: <strong>{{ employee.phone }}</strong></li>
                                                                 <li>Email: <strong>{{ employee.email }}</strong></li>
-                                                                <li>Emergency Contact (Name and phone number): <strong>{{ employee.emergency_contact }}</strong></li>
-                                                                <li>Employment Start Date: <strong>{{ employee.employment_start_date }}</strong></li>
-                                                                <li>Employment End Date: <strong>{{ employee.employment_end_date }}</strong></li>
+                                                                <li>Emergency Contact: <strong>{{ employee.emergency_contact }}</strong></li>
+                                                                <li>Start Date: <strong>{{ employee.employment_start_date }}</strong></li>
+                                                                <li>End Date: <strong>{{ employee.employment_end_date }}</strong></li>
                                                             </ul>
                                                         </div>
                                                             <div class="modal-footer">
@@ -72,13 +67,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td>
                                                 <a class="btn btn-warning me-1" href="{% url 'edit' employee.id %}">
-                                                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                                    EDIT
                                                 </a>
+                                            </td>
+                                            <td>
                                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ employee.id }}">
-                                                    <i class="fa-solid fa-trash-can fa-lg"></i>
+                                                    DELETE
                                                 </button>
-
+                                            
                                                 <div class="modal" id="delete{{ employee.id }}" tabindex="-1" aria-labelledby="myModallabel2" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">

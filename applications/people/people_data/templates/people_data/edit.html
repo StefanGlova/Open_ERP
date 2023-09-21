@@ -14,11 +14,13 @@
         <div class="col-6">
             <div class="card bg-light mb-3">
                 <div class="card-header">
-                    <i class="fa-solid fa-pen-to-square" "fa-lg"></i>
                     Update Employee Records
                 </div>
+                <div class="card-header">
+                    <p class="warning">This is DEMO. Do not enter real data</p>
+                </div>
                 <div class="card-body">
-                    <form action="{% url 'edit' student.id %}" method="POST">
+                    <form action="{% url 'edit' employee.id %}" method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button type="submit" class="btn btn-primary">Update</button>
