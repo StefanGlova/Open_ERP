@@ -12,7 +12,6 @@ class EmployeeForm(forms.ModelForm):
             'email',
             'emergency_contact',
             'employment_start_date',
-            'employment_end_date'
         ]
         labels = {
             'first_name': 'First Name',
@@ -21,8 +20,7 @@ class EmployeeForm(forms.ModelForm):
             'phone': 'Phone Number',
             'email': 'Email',
             'emergency_contact': 'Emergency Contact (Name and phone number)',
-            'employment_start_date': 'Employment Start Date',
-            'employment_end_date': 'Employment End Date'           
+            'employment_start_date': 'Employment Start Date',       
         }
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -32,5 +30,4 @@ class EmployeeForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'emergency_contact': forms.TextInput(attrs={'class': 'form-control'}),
             'employment_start_date': forms.DateInput(attrs={'class': 'form-control'}),
-            'employment_end_date': forms.DateInput(attrs={'class': 'form-control'})           
         }

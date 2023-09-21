@@ -25,7 +25,6 @@ def add(request):
             new_email = form.cleaned_data['email']
             new_emergency_contact = form.cleaned_data['emergency_contact']
             new_employment_start_date = form.cleaned_data['employment_start_date']
-            new_employment_end_date = form.cleaned_data['employment_end_date']
 
             new_employee = Employee(
                 first_name = new_first_name,
@@ -35,7 +34,6 @@ def add(request):
                 email = new_email,
                 emergency_contact = new_emergency_contact,
                 employment_start_date = new_employment_start_date,
-                employment_end_date = new_employment_end_date
             )
 
             new_employee.save()
