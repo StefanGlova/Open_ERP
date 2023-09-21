@@ -1,8 +1,22 @@
 {% extends "home_app/base.html" %} {% load static %} {% block content %}
 
 <div class="container">
+  <h1>About Project</h1>
+  <div class="container">
+    <p>
+      ERP, or Enterprise Resource Planning software is usually core software for every large business. Every business can be split to 
+
+    </p>
+    <br>
+    <img
+      src="{% static 'home_app/images/open_ERP structure.jpg' %}"
+      class="img-fluid"
+      alt="Image"
+    />
+
+  </div>
+  <br>
   <h1>About Author</h1>
-  <br />
   <div class="container">
     <div class="row">
       <div class="col-8"></div>
@@ -56,14 +70,6 @@
         </div>
       </div>
     </div>
-    <br />
-    <h1>About Project</h1>
-    <br>
-    <img
-      src="{% static 'home_app/images/open_ERP structure.jpg' %}"
-      class="img-fluid"
-      alt="Image"
-    />
   </div>
 
   {% endblock content %}

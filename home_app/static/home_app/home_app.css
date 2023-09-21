@@ -25,3 +25,8 @@ h1 {
 .navbar {
     font-size: 150%;
 }
+
+.warning {
+    color: red;
+    font-weight: bold;
+}
