@@ -1,17 +1,37 @@
-{% extends "home_app/base.html" %}
-{% load static %}
+{% extends "home_app/base.html" %} {% load static %} {% block content %}
 
-{% block content %}
-
-    <div class="container">
-        <h1>Welcome to Open ERP</h1>
-        <br>
-        <p>Open-source Enterprise Resource Planning software for small and medium businesses.</p>
-        <p class="warning text-center">!!! This is not product for real opeartion, but DEMO version. Do not input any real data. !!!</p>
-        <p class="warning text-center">!!! Open ERP is not finished yet. Feel free to try this DEMO, but there is a lot of functionality which is not implemented yet. !!!</p>
-        <img src="{% static 'home_app/images/background_img.jpg' %}" class="img-fluid" alt="Image">
-        <p>Photo by <a href="https://unsplash.com/@tfrants?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tyler Franta</a> on <a href="https://unsplash.com/photos/iusJ25iYu1c?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-        </p>
-    </div>
+<div class="container">
+  <h1>Welcome to Open ERP</h1>
+  <br />
+  <p>
+    Open-source Enterprise Resource Planning software for small and medium
+    businesses.
+  </p>
+  <p class="warning text-center">
+    !!! This is not product for real opeartion, but DEMO version. Do not input
+    any real data. !!!
+  </p>
+  <p class="warning text-center">
+    !!! Open ERP is not finished yet. Feel free to try this DEMO, but there is a
+    lot of functionality which is still going to be implemented. !!!
+  </p>
+  <img
+    src="{% static 'home_app/images/background_img.jpg' %}"
+    class="img-fluid"
+    alt="Image"
+  />
+  <p>
+    Photo by
+    <a
+      href="https://unsplash.com/@tfrants?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+      >Tyler Franta</a
+    >
+    on
+    <a
+      href="https://unsplash.com/photos/iusJ25iYu1c?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+      >Unsplash</a
+    >
+  </p>
+</div>
 
 {% endblock content %}

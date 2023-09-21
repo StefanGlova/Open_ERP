@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'applications.people.health_safety_environment.apps.HealthSafetyEnvironmentConfig',
     'applications.people.people_data.apps.PeopleDataConfig',
     'applications.people.skills_learning_development.apps.SkillsLearningDevelopmentConfig',
+    'applications.KPIs.balanced_score_card.apps.BalancedScoreCardConfig',
     'applications.KPIs.customers_KPIs.apps.CustomersKpisConfig',
     'applications.KPIs.finance_KPIs.apps.FinanceKpisConfig',
     'applications.KPIs.operation_KPIs.apps.OperationKpisConfig',
