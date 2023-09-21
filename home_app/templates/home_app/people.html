@@ -4,9 +4,22 @@
 {% block content %}
     
     <div class="container">
-        <h1>People App</h1>
+        <h1 style="text-align: center;">People App</h1>
         <br>
-        <p>Open-source Enterprise Resource Planning software for small and medium businesses.</p>
+
+        <div class="container">
+            <h3>This is People Group of Applications, part of Open ERP</h3>
+            <h4>You can use below apps to do following tasks:</h4>
+            <ul>
+                <li>People Data - to manage people information, such as name, address, start date, etc. You can add, edit, delete and view all relavant information about people in your organisation here.</li>
+                <li>Health, Safety & Environment - to manage health and safety of people in your organisaion, your customers contractors and general public. Plus inpact of your business on environment. You can record accidents, inventigation outcome etc, here.</li>
+                <li>Skills, Learning & Development - to manage skills required by your organisation. You can use this app to allocate skills to people, plan learning and developemnt of your people</li>
+                <li>Disciplinary & Grievance - you can use this app to keep record of live disciplinary and grievance and also to archive them which are closed.</li>
+            </ul>
+
+        </div>
+
+    
         <img src="{% static 'home_app/images/people.jpg' %}" class="img-fluid" alt="Image">
         <p>Photo by <a href="https://unsplash.com/@amyhirschi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Amy Hirschi</a> on <a href="https://unsplash.com/photos/K0c8ko3e6AA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
     </div>
