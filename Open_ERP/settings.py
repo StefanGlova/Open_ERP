@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -101,6 +102,15 @@ DATABASES = {
     }
 }
 
+# database_url = os.getenv("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse("postgres://stefan:JQUVYy4Jmht5CW1Jho50e21b5MNrWErw@dpg-ckatkd6smu8c738por20-a.frankfurt-postgres.render.com/open_erp_database")
+
+
+# INTERNAL DATABASE (database and deployment on render.com)
+# postgres://stefan:JQUVYy4Jmht5CW1Jho50e21b5MNrWErw@dpg-ckatkd6smu8c738por20-a/open_erp_database
+
+# EXTERNAL DATABASE (database on render.com deployment on local host)
+# postgres://stefan:JQUVYy4Jmht5CW1Jho50e21b5MNrWErw@dpg-ckatkd6smu8c738por20-a.frankfurt-postgres.render.com/open_erp_database
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
