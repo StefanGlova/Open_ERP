@@ -6,7 +6,7 @@ from .forms import EmployeeForm
 
 # Create your views here.
 def people_data_home(request):
-    return render(request, 'people_data/home.html', {
+    return render(request, 'people_data/home_people_data.html', {
         'employees': Employee.objects.all()
     })
 
@@ -37,13 +37,13 @@ def add(request):
             )
 
             new_employee.save()
-            return render(request, 'people_data/add.html', {
+            return render(request, 'people_data/add_people_data.html', {
                 'form': EmployeeForm(),
                 'success': True
             })
     else:
         form = EmployeeForm()
-    return render(request, 'people_data/add.html', {
+    return render(request, 'people_data/add_people_data.html', {
         'form': EmployeeForm()
     })
 
@@ -53,14 +53,14 @@ def edit(request, id):
         form = EmployeeForm(request.POST, instance=employee)
         if form.is_valid():
             form.save()
-            return render(request, 'people_data/edit.html', {
+            return render(request, 'people_data/edit_people_data.html', {
                 'form': form,
                 'success': True,
                 'employee': employee
             })
     else:
         form = EmployeeForm(instance=employee)
-    return render(request, 'people_data/edit.html', {
+    return render(request, 'people_data/edit_people_data.html', {
         'form': form,
         'employee': employee
     })
