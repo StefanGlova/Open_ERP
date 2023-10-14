@@ -17,6 +17,7 @@ def add(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
         if form.is_valid():
+            print("Form is valid")
             new_first_name = form.cleaned_data['first_name']
             new_last_name = form.cleaned_data['last_name']
             new_address = form.cleaned_data['address']
@@ -40,6 +41,8 @@ def add(request):
                 'form': EmployeeForm(),
                 'success': True
             })
+        else:
+            print(form.errors)
     else:
         form = EmployeeForm()
     return render(request, 'people_data/add_people_data.html', {
