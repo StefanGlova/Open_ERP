@@ -3,14 +3,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 
-# Create your views here.
-
-
 class ListIncidentsView(View):
     def get(self, request):
         response = requests.get("https://safetyapi-open-erp.onrender.com/api/incidents")
         incidents = response.json()
-        return render(request, "list_incidents.html", {"incidents": incidents})
+        return render(request, "home_incidents.html", {"incidents": incidents})
 
 
 class ViewIncidentView(View):

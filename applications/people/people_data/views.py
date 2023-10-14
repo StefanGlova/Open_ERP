@@ -4,7 +4,6 @@ from django.urls import reverse
 from .models import Employee
 from .forms import EmployeeForm
 
-# Create your views here.
 def people_data_home(request):
     return render(request, 'people_data/home_people_data.html', {
         'employees': Employee.objects.all()

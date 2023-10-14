@@ -1,12 +1,12 @@
-{% extends "people_data/base.html" %} {% load static %} {% block body %}
+{% extends "health_safety_environment/base_incidents.html" %} {% load static %} {% block body %}
 
 <div class="row">
     <div class="col-12">
         {% if employees %}
             <div class="card bg-light ms-4 me-4 mb-4">
                 <div class="card-header">
-                    <a class="btn btn-success me-1" href="{% url 'add' %}">
-                        ADD New Employee
+                    <a class="btn btn-success me-1" href="{% url 'add_incident' %}">
+                        Record New Incident
                     </a>
                 </div>
                 <div class="card-body">
@@ -15,50 +15,58 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th scope="col">First Name</th>
-                                    <th scope="col">Last Name</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Phone Number</th>
-                                    <th scope="col">Email</th> 
+                                    <th scope="col">Incident</th>
+                                    <th scope="col">Incident Type</th>
+                                    <th scope="col">Person Name</th>
+                                    <th scope="col">Incident Date</th>
+                                    <th scope="col">Incident Time</th> 
+                                    <th scope="col">Witness Name</th> 
+                                    <th scope="col">Weather</th> 
+                                    <th scope="col">Light</th> 
+                                    <th scope="col">Description</th> 
                                     <th scope="col">Details</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>                                        
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {% for employee in employees  %}
+                                    {% for incident in incidents  %}
                                         <tr>
-                                            <td>{{ employee.first_name }}</td>
-                                            <td>{{ employee.last_name }}</td>
-                                            <td>{{ employee.address }}</td>
-                                            <td>{{ employee.phone }}</td>
-                                            <td>{{ employee.email }}</td>
+                                            <td>{{ incident.id }}</td>
+                                            <td>{{ incident.incident_type }}</td>
+                                            <td>{{ incident.person_name }}</td>
+                                            <td>{{ incident.incident_date }}</td>
+                                            <td>{{ incident.incident_time }}</td>
+                                            <td>{{ incident.witness_name }}</td>
+                                            <td>{{ incident.weather }}</td>
+                                            <td>{{ incident.light }}</td>
+                                            <td>{{ incident.description }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-success me-1" href="{% url 'view_employee' employee.id %}"
-                                                    data-bs-toggle="modal" data-bs-target="#myModal{{ employee.id }}">
+                                                <button type="button" class="btn btn-success me-1" href="{% url 'view_incident' incident.id %}"
+                                                    data-bs-toggle="modal" data-bs-target="#myModal{{ incident.id }}">
                                                     VIEW
                                                 </button>
 
-                                                <div class="modal" id="myModal{{ employee.id }}" tabindex="-1" aria-labelledby="myModallabell" aria-hidden="true">
+                                                <div class="modal" id="myModal{{ incident.id }}" tabindex="-1" aria-labelledby="myModallabell" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">{{ employee }}</h5>
+                                                            <h5 class="modal-title">{{ incident }}</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true"></span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <ul class="list-unstyled">
-                                                                <li>Employee ID: <strong>{{ employee.id }}</strong></li>
-                                                                <li>First Name: <strong>{{ employee.first_name }}</strong></li>
-                                                                <li>Last Name: <strong>{{ employee.last_name }}</strong></li>
-                                                                <li>Address: <strong>{{ employee.address }}</strong></li>
-                                                                <li>Phone Number: <strong>{{ employee.phone }}</strong></li>
-                                                                <li>Email: <strong>{{ employee.email }}</strong></li>
-                                                                <li>Emergency Contact: <strong>{{ employee.emergency_contact }}</strong></li>
-                                                                <li>Start Date: <strong>{{ employee.employment_start_date }}</strong></li>
-                                                                <li>End Date: <strong>{{ employee.employment_end_date }}</strong></li>
+                                                                <li>Incident ID: <strong>{{ incident.id }}</strong></li>
+                                                                <li>Incident Type: <strong>{{ incident.incident_type }}</strong></li>
+                                                                <li>Person Name: <strong>{{ incident.person_name }}</strong></li>
+                                                                <li>Incident Date: <strong>{{ incident.incident_time }}</strong></li>
+                                                                <li>Incident Time: <strong>{{ incident.incident_time }}</strong></li>
+                                                                <li>Witness Name: <strong>{{ incident.witness_name }}</strong></li>
+                                                                <li>Weather: <strong>{{ incident.weather }}</strong></li>
+                                                                <li>Light: <strong>{{ incident.light }}</strong></li>
+                                                                <li>Description: <strong>{{ incident.description }}</strong></li>
                                                             </ul>
                                                         </div>
                                                             <div class="modal-footer">
@@ -69,29 +77,29 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a class="btn btn-warning me-1" href="{% url 'edit' employee.id %}">
+                                                <a class="btn btn-warning me-1" href="{% url 'edit_incident' incident.id %}">
                                                     EDIT
                                                 </a>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ employee.id }}">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ incident.id }}">
                                                     DELETE
                                                 </button>
                                             
-                                                <div class="modal" id="delete{{ employee.id }}" tabindex="-1" aria-labelledby="myModallabel2" aria-hidden="true">
+                                                <div class="modal" id="delete{{ incident.id }}" tabindex="-1" aria-labelledby="myModallabel2" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">{{ employee }}</h5>
+                                                            <h5 class="modal-title">{{ incident }}</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true"></span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p>Are you sure you want to delete this employee?</p>
+                                                            <p>Are you sure you want to delete this incident?</p>
                                                         </div>
                                                             <div class="modal-footer">
-                                                                <form action="{% url 'delete' employee.id %}" method="POST">
+                                                                <form action="{% url 'delete_incident' incident.id %}" method="POST">
                                                                     {% csrf_token %}
                                                                     <button type="submit" class="btn btn-primary">Delete</button>
                                                                 </form>
@@ -111,7 +119,7 @@
                 </div>
             </div>
         {% else %}
-            <h5 class="alert alert-primary ms-4 me-4">No Employee Records</h5>
+            <h5 class="alert alert-primary ms-4 me-4">No Incident Records</h5>
         {% endif %}
 
     </div>

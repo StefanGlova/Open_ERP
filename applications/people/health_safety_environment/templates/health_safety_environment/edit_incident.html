@@ -1,12 +1,11 @@
-{% extends "people_data/base.html" %} {% load static %} {% block body %}
+{% extends "health_safety_environment/base_incidents.html" %} {% load static %} {% block body %}
 
-
-<h3 class="text-center m-4">Add Employee</h3>
+<h3 class="text-center m-4">Update Incident</h3>
 
 {% if success %}
     <div class="alert alert-success"  role="alert">
-        The new employee added successfully.
-        <a href="{% url 'people_data_home' %}" class="alert-link">Go to Home Page.</a>
+        The incident updated successfully.
+        <a href="{% url 'list_incidents' %}" class="alert-link">Go to Home Page.</a>
     </div>
 
 {% else %}
@@ -15,17 +14,17 @@
         <div class="col-6">
             <div class="card bg-light mb-3">
                 <div class="card-header">
-                    Employee Registation
+                    Update Incident Information
                 </div>
                 <div class="card-header">
                     <p class="warning">This is DEMO. Do not enter real data</p>
                 </div>
                 <div class="card-body">
-                    <form action="{% url 'add' %}" method="POST">
+                    <form action="{% url 'edit_incident' incident.id %}" method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Add</button>
-                        <a href="{% url 'people_data_home' %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="{% url 'list_incidents' %}" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
@@ -33,6 +32,7 @@
     </div>
 
 {% endif %}
+
 
 
 {% endblock body %}
