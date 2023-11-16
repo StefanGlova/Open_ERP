@@ -7,7 +7,7 @@ class ListIncidentsView(View):
     def get(self, request):
         response = requests.get("https://safetyapi-open-erp.onrender.com/api/incidents")
         incidents = response.json()
-        return render(request, "home_incidents.html", {"incidents": incidents})
+        return render(request, "health_safety_environment/home_incidents.html", {"incidents": incidents})
 
 
 class ViewIncidentView(View):
@@ -24,7 +24,7 @@ class ViewIncidentView(View):
 
 class AddIncidentView(View):
     def get(self, request):
-        return render(request, "add_incident.html")
+        return render(request, "health_safety_environment/add_incident.html")
 
     def post(self, request):
         data = {

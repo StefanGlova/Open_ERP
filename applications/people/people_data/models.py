@@ -21,3 +21,7 @@ class EmploymentHistory(models.Model):
     position = models.CharField(max_length=250)
     position_start_date = models.DateField()
     position_end_date = models.DateField(null=True)
+
+
+class Positions(models.Model):
+    pass
