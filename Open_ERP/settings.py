@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dev_passwords import passwords
 import dj_database_url
 import os
 
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY','django-insecure-lui$lz3jbo&(04)xg=so7!008&*&%9j&v0)_daoenk!$wk(sz_')
+SECRET_KEY = os.getenv('SECRET_KEY',passwords["Secret_Key"])
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('IS_DEVELOPMENT', True)
@@ -103,17 +104,8 @@ DATABASES = {
 }
 
 # database_url = os.getenv("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse("postgres://stefan:JQUVYy4Jmht5CW1Jho50e21b5MNrWErw@dpg-ckatkd6smu8c738por20-a.frankfurt-postgres.render.com/open_erp_database")
+DATABASES["default"] = dj_database_url.parse(passwords["Database"])
 
-
-# INTERNAL DATABASE (database and deployment on render.com)
-# postgres://stefan:JQUVYy4Jmht5CW1Jho50e21b5MNrWErw@dpg-ckatkd6smu8c738por20-a/open_erp_database
-
-# EXTERNAL DATABASE (database on render.com deployment on local host)
-# postgres://stefan:JQUVYy4Jmht5CW1Jho50e21b5MNrWErw@dpg-ckatkd6smu8c738por20-a.frankfurt-postgres.render.com/open_erp_database
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
