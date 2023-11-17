@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from dev_passwords import passwords
+try:
+    from dev_passwords import passwords
+except:
+    pass
 import dj_database_url
 import os
 
@@ -23,7 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY',passwords["Secret_Key"])
+try:
+    SECRET_KEY = os.getenv('SECRET_KEY',passwords["Secret_Key"])
+except:
+    SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('IS_DEVELOPMENT', True)
@@ -104,7 +110,10 @@ DATABASES = {
 }
 
 # database_url = os.getenv("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(passwords["Database"])
+try:
+    DATABASES["default"] = dj_database_url.parse(passwords["Database"])
+except:
+    DATABASES["default"] = database_url = os.getenv("DATABASE_URL")
 
 
 AUTH_PASSWORD_VALIDATORS = [
